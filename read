@@ -1,0 +1,123 @@
+Install-React-Native-On-Ubuntu-18.04
+
+
+Install Node.js:
+sudo apt-get install nodejs
+
+node -v
+
+Install nvm
+sudo apt-get update
+Install** c++ compiler*. It may already exists, but just in case.*
+apt-get install build-essential libssl-dev
+
+Install nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+
+Reload bash
+source ~/.bashrc
+
+After installation close and reopen terminal and check nvm version
+nvm --version
+Install node
+Install latest node
+nvm install node
+
+Set default node version for nvm
+nvm alias default node
+
+Check version of node and npm
+node -v
+npm -v
+
+
+
+
+
+Install Java jdk
+sudo apt install openjdk-8-jre openjdk-8-jdk
+
+java  -version
+javac -version﻿
+
+
+Configure build path in your .bashrc 
+
+sudo nano /home/mohammed/.bashrc 
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/emulator
+
+
+echo $ANDROID_HOME
+
+out
+/home/mohammed/Android/Sdk
+Reload bash
+source ~/.bashrc
+
+Trouble shooting with permission
+sudo apt install qemu-kvm
+sudo adduser mohammed kvm
+sudo chown mohammed /dev/kvm
+
+
+install watchman
+sudo apt install git
+
+git clone https://github.com/facebook/watchman.git
+cd watchman/
+git checkout v4.7.0
+sudo apt-get install -y autoconf automake build-essential python-dev
+./autogen.sh 
+./configure 
+make
+# error this step 
+./configure --enable-lenient
+sudo make install
+watchman –version
+# 4.7.0
+
+
+
+
+
+
+
+
+
+Creating a Sample application
+
+npx react-native init SampleProject
+
+Run React Native App
+cd SampleProject
+
+mkdir android/app/src/main/assets
+
+
+
+var sharedBlacklist = [ /node_modules[\/\\]react[\/\\]dist[\/\\].*/, /website\/node_modules\/.*/, /heapCapture\/bundle\.js/, /.*\/__tests__\/.*/ ]; 
+
+
+react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
+
+
+
+
+
+npm install
+npm start - --reset-cache
+
+
+
+ Finally, run the app using this command
+
+npx react-native run-android
+npx react-native start
+
+
+i finded solution. I did sudo pkill -9 -x fseventsd and then run command react-native start with sudo. sudo react-native start
+
